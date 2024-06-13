@@ -1,0 +1,4 @@
+*.pyc
+# Ignore python cache files
+
+models/checkpoints

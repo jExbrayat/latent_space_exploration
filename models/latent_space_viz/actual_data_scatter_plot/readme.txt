@@ -1,0 +1,2 @@
+This folder contains latent space representation of each image of the MNIST dataset, for a given encoder.
+As encoding is done on a two dimensional latent space, all represntations can be plotted together at once on a two axis graph.

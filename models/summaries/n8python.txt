@@ -1,0 +1,27 @@
+Encoder
+Layer                Output Shape         Neurons    Param #              Activation          
+====================================================================================================
+conv2d               (26, 26, 32)         N/A        320                  relu                
+conv2d_1             (24, 24, 32)         N/A        9248                 relu                
+max_pooling2d        (12, 12, 32)         N/A        0                    None                
+conv2d_2             (10, 10, 64)         N/A        18496                relu                
+conv2d_3             (8, 8, 64)           N/A        36928                relu                
+max_pooling2d_1      (4, 4, 64)           N/A        0                    None                
+flatten              (1024,)              N/A        0                    None                
+dense                (128,)               128        131200               relu                
+dense_1              (32,)                32         4128                 relu                
+dense_2              (8,)                 8          264                  relu                
+dense_3              (2,)                 2          18                   tanh                
+====================================================================================================
+Total params: 200602
+
+Decoder
+Layer                Output Shape         Neurons    Param #              Activation          
+====================================================================================================
+dense_4              (10,)                10         30                   tanh                
+dense_5              (49,)                49         539                  tanh                
+dense_6              (196,)               196        9800                 tanh                
+dense_7              (784,)               784        154448               sigmoid             
+reshape              (28, 28, 1)          N/A        0                    None                
+====================================================================================================
+Total params: 164817

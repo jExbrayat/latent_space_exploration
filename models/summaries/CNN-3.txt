@@ -1,0 +1,27 @@
+Encoder
+Layer                Output Shape         Neurons    Param #              Activation          
+====================================================================================================
+conv2d               (26, 26, 4)          N/A        40                   relu                
+max_pooling2d        (13, 13, 4)          N/A        0                    None                
+dropout              (13, 13, 4)          N/A        0                    None                
+conv2d_1             (11, 11, 2)          N/A        74                   relu                
+max_pooling2d_1      (5, 5, 2)            N/A        0                    None                
+dropout_1            (5, 5, 2)            N/A        0                    None                
+conv2d_2             (3, 3, 1)            N/A        19                   relu                
+conv2d_3             (2, 1, 1)            N/A        7                    relu                
+====================================================================================================
+Total params: 140
+
+Decoder
+Layer                Output Shape         Neurons    Param #              Activation          
+====================================================================================================
+conv2d_transpose     (3, 3, 1)            N/A        7                    relu                
+conv2d_transpose_1   (5, 5, 1)            N/A        10                   relu                
+up_sampling2d        (10, 10, 1)          N/A        0                    None                
+dropout_2            (10, 10, 1)          N/A        0                    None                
+conv2d_transpose_2   (12, 12, 1)          N/A        10                   relu                
+up_sampling2d_1      (24, 24, 1)          N/A        0                    None                
+dropout_3            (24, 24, 1)          N/A        0                    None                
+conv2d_transpose_3   (28, 28, 1)          N/A        26                   relu                
+====================================================================================================
+Total params: 53

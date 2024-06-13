@@ -1,0 +1,28 @@
+Encoder
+Layer                Output Shape         Neurons    Param #              Activation          
+====================================================================================================
+conv2d               (26, 26, 16)         N/A        160                  relu                
+max_pooling2d        (13, 13, 16)         N/A        0                    None                
+conv2d_1             (11, 11, 8)          N/A        1160                 relu                
+max_pooling2d_1      (5, 5, 8)            N/A        0                    None                
+flatten              (200,)               N/A        0                    None                
+dense                (64,)                64         12864                relu                
+dense_1              (32,)                32         2080                 relu                
+dense_2              (8,)                 8          264                  relu                
+dense_3              (4,)                 4          36                   relu                
+dense_4              (2,)                 2          10                   relu                
+====================================================================================================
+Total params: 16574
+
+Decoder
+Layer                Output Shape         Neurons    Param #              Activation          
+====================================================================================================
+dense_5              (4,)                 4          12                   relu                
+dense_6              (8,)                 8          40                   relu                
+dense_7              (32,)                32         288                  relu                
+dense_8              (64,)                64         2112                 relu                
+dense_9              (128,)               128        8320                 relu                
+dense_10             (784,)               784        101136               relu                
+reshape              (28, 28, 1)          N/A        0                    None                
+====================================================================================================
+Total params: 111908

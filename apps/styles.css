@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    /* Use flexbox to arrange children side by side */
+    justify-content: space-around;
+    /* Distribute space around items */
+    align-items: flex-start;
+    /* Align items to the top */
+    gap: 20px;
+    /* Gap between the items */
+    margin-top: 3%;
+    margin-left: 3%;
+    font: 1em Arial, sans-serif;
+    font-size: 18;
+
+}
+
+.plot {
+    /* Styling for the plot div */
+    width: 50%;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Let the height adjust based on content */
+}
+
+.image-container {
+    /* Styling for the image container */
+    width: 100%;
+}
+
+#selected-image {
+    /* Styling for the selected image */
+    max-width: 100%;
+    /* Ensure image doesn't exceed container width */
+    height: 200px;
+    /* Maintain aspect ratio */
+    margin-left: auto;
+    margin-top: 2%;
+}
+
+img {
+    color: lightcoral;
+    font: 18 Arial, sans-serif;
+}
+
+.legend-container {
+    width: 10%;
+    /* Adjust the legend container width as needed */
+    padding-top: 20px;
+
+}
+
+.legend {
+    padding: 0;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 20px;
+    /* Adjust the color block width */
+    height: 20px;
+    /* Adjust the color block height */
+    margin-right: 10px;
+    /* Spacing between color block and text */
+}
+
+.legend-text {
+    font-size: 14px;
+    /* Adjust font size as needed */
+}

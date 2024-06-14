@@ -9,32 +9,23 @@ import seaborn as sns
 
 
 def color_meshgrid_based_on_pred(
-    autoencoder_name: str,
-    autoencoder_file_format: str,
+    autoencoder_path: str,
     classifier_path: str,
-    save_folder_path: str,
+    save_path: str,
     need_to_rebuild_model: bool = False,
     flatten_data: bool = False,
 ) -> None:
     """Create a plot with whole meshgrid colored based on the classifier's predictions and save it.
 
     Args:
-        autoencoder_name (str): Name referencing to the autoencoder in the repository.
+        autoencoder_path (str): Path referencing to the autoencoder in the repository.
         autoencoder_file_format (str): Format of the saved model. Used to constitue the model's file path.
         classifier_path (str): Path to the classifier making prediction on decoded meshgrid points' class.
-        save_folder_path (str): Path to which save the plot and the labels grid (two output files: .npy and .png)
+        save_path (str): Path to which save the plot and the labels grid (two output files: .npy and .png)
         e.g. models/latent_space_viz/colormaps
         need_to_rebuild_model (bool): If only weights were saved, setting to True will rebuild
         the model and load the weights under .h5 file. Warning: be sure src.models.define_model package builds the right model.
     """
-
-    # Define autoencoder path
-    autoencoder_path = (
-        f"models/autoencoders/encod_decod_{autoencoder_name}{autoencoder_file_format}"
-    )
-
-    # Define save path
-    save_fig_path = f"{save_folder_path}/{autoencoder_name}_cmap"
 
     # Load models
     classifier = load_model(classifier_path)
@@ -89,7 +80,7 @@ def color_meshgrid_based_on_pred(
     y_pred_grid = y_pred_categorical.reshape(100, 100)
 
     # Save colormap as numpy array
-    np.save(save_fig_path, y_pred_grid)
+    np.save(save_path, y_pred_grid)
 
     # Create a DataFrame to use with Seaborn
     data = pd.DataFrame(
@@ -115,6 +106,5 @@ def color_meshgrid_based_on_pred(
     )
     plt.xlabel("Latent space first dimension")
     plt.ylabel("Latent space second dimension")
-    plt.savefig(save_fig_path)
-    plt.show()
+    plt.savefig(save_path)
     plt.close()

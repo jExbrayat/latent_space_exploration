@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const layout = {
         title: {
-            text: `Autoencoder latent space,<br>areas colored based on corresponding encoded digit`,
+            text: `Autoencoder latent space,<br>areas colored based on corresponding encoded digits`,
             font: {
                 size: 18,
                 family: 'Arial, sans-serif'

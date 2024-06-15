@@ -1,4 +1,9 @@
-*.pyc
 # Ignore python cache files
+*.pyc
 
-models/checkpoints
+# Ignore models checkpoints files
+models/checkpoints/*
+
+# Track all docs files in order to keep repository's structure
+!*.txt
+!*.md

@@ -7,4 +7,7 @@ Several autoencoder architectures were tried. The best and chosen one is a varia
 
 All tested architectures are logged in ``docs/models_characteristics.md``.  
 
-<img src="assets/vae_latent_space_evolution.gif" width="700" height="700" />
+<img src="assets/vae_latent_space_evolution.gif" width="500" height="auto" />
+
+<img src="assets/application_teaser.gif" width="500" height="auto" />
+

@@ -72,3 +72,12 @@ img {
     font-size: 14px;
     /* Adjust font size as needed */
 }
+
+/* Styles for screens smaller than 1024px */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        margin-left: 0;
+    }
+}

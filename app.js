@@ -5,8 +5,8 @@ async function fetchData(url) {
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
-    const decodedMeshgrid = await fetchData('decoded_meshgrid.json');
-    const cmap = await fetchData('cmap.json');
+    const decodedMeshgrid = await fetchData('assets/decoded_meshgrid.json');
+    const cmap = await fetchData('assets/cmap.json');
     const gridSize = 100;
 
     // Define Seaborn-like "tab10" colormap

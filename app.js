@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     Plotly.newPlot('plot', [trace], layout);
 
-    document.getElementById('plot').on('plotly_hover', function (data) {
+    function graphInteraction(data) {
         const pointIndex = data.points[0].pointIndex;
 
         // Check if pointIndex is valid
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         const canvas = document.createElement('canvas');
-        const imageShape = [28, 28]
+        const imageShape = [28, 28];
         canvas.width = imageShape[0];
         canvas.height = imageShape[1];
         const ctx = canvas.getContext('2d');
@@ -123,5 +123,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         ctx.putImageData(imageData, 0, 0);
         const img = document.getElementById('selected-image');
         img.src = canvas.toDataURL();
-    });
+    }
+
+    document.getElementById('plot').on('plotly_click', graphInteraction);
+    document.getElementById('plot').on('plotly_hover', graphInteraction);
 });

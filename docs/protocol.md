@@ -3,7 +3,7 @@ This file logs my thoughts and describes my objectives.
 
 ## Low loss vs right meshgrid decoding
 Dense-1 autoencoder performs less than ConDense-2 autoencoder altough Dense-1 gives much better decoding on the meshgrid of latent space.  
-I.e. ConvDense-2 manage better to autoencode MNIST data, but fails at the **task we are trying to achieve in this repository, that is to display a 100x100 grid of the 2-dimensional latent space with decoded image of each point of the grid**.  
+This means ConvDense-2 manages better to autoencode MNIST data, but fails at the **task we are trying to achieve in this repository, that is to display a 100x100 grid of the 2-dimensional latent space with decoded image of each point of the grid**.  
 
 There may be two reasons for that:  
 - Decoder overfits actual data and thus fails to generalize on the whole meshgrid.  

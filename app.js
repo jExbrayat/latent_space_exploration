@@ -9,28 +9,30 @@ document.addEventListener('DOMContentLoaded', async function () {
     const cmap = await fetchData('assets/cmap.json');
     const gridSize = 100;
 
-    // Define a set of visually distinct colors for the colormap
-    const distinctColors = [
+    // Define Seaborn-like "tab10" colormap
+    const tab10Colors = [
         "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
         "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
     ];
 
-    // Create a function to map values to distinct colors
+    // Create a function to map values to colors
     function getColor(value) {
-        const index = value % distinctColors.length;
-        return distinctColors[index];
+        const index = value;
+        return tab10Colors[index];
     }
 
     // Generate legend dynamically
     const legendContainer = document.getElementById('legend');
 
     // Labels
-    const classLabels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const classLabels = ["0", "1", "2", "3", "4",
+        "5", "6", "7", "8", "9"];
 
     // Create legend items
-    distinctColors.forEach((color, index) => {
+    tab10Colors.forEach((color, index) => {
         const li = document.createElement('li');
-        li.classList.add('legend-li');
+        li.style.listStyle = 'none'; // Remove default list style
+        li.style.marginBottom = '5px'; // Adjust spacing between legend items
         li.innerHTML = `
             <span class="legend-color" style="background-color: ${color};"></span>
             <span class="legend-text">${classLabels[index]}</span>
@@ -41,11 +43,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Flatten and map the colormap
     const flatCmap = cmap.flat().map(getColor);
 
-    // Create x axis and y axis ticks
+    // Create x axis and y axis ticks prior to create coordinates vectors of size 10_000 
     const x_axis = [...Array(gridSize).keys()].map(i => i / (gridSize - 1));
     const y_axis = [...Array(gridSize).keys()].map(i => i / (gridSize - 1));
 
-    // Create coordinates vectors
+    // Create coordinates vectors used to map the plot
     const x_coordinates = [];
     const y_coordinates = [];
     for (let i = 0; i < gridSize; i++) {
@@ -61,8 +63,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         mode: 'markers',
         marker: {
             color: flatCmap,
-            size: 6, // Increased marker size for better visibility
-            opacity: 0.8 // Reduced opacity for smoother appearance
+            size: 5
         },
         type: 'scatter',
         hoverinfo: 'none',
@@ -70,41 +71,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const layout = {
         title: {
-            text: `Explore the Latent Space`,
+            text: `Autoencoder latent space,<br>areas colored based on corresponding encoded digits`,
             font: {
-                size: 28, // Larger title font size
+                size: 18,
                 family: 'Arial, sans-serif'
             }
         },
         hovermode: 'closest',
-        xaxis: {
-            scaleanchor: "y",
-            scaleratio: 1,
-            fixedrange: true,
-            title: {
-                text: 'X-axis',
-                font: {
-                    size: 16
-                }
-            }
-        },
-        yaxis: {
-            scaleanchor: "x",
-            scaleratio: 1,
-            fixedrange: true,
-            title: {
-                text: 'Y-axis',
-                font: {
-                    size: 16
-                }
-            }
-        },
-        width: 800, // Increased plot width for better display
-        height: 800, // Increased plot height for better display
-        margin: { l: 40, r: 40, t: 80, b: 40 }, // Increased margins for better spacing
-        plot_bgcolor: '#262626', // Darker plot background
-        paper_bgcolor: '#1a1a1a', // Dark background
-        font: { color: '#f0f0f0' }, // Light text color
+        xaxis: { scaleanchor: "y", scaleratio: 1, fixedrange: true },
+        yaxis: { scaleanchor: "x", scaleratio: 1, fixedrange: true },
+        width: 550,  // Adjust width for the colormap plot
+        height: 550, // Adjust height for the colormap plot
+        margin: { l: 20, r: 20, t: 60, b: 20 } // Adjust margins as needed
     };
 
     Plotly.newPlot('plot', [trace], layout);
@@ -112,11 +90,13 @@ document.addEventListener('DOMContentLoaded', async function () {
     function graphInteraction(data) {
         const pointIndex = data.points[0].pointIndex;
 
+        // Check if pointIndex is valid
         if (pointIndex === undefined) {
             console.error("Invalid point index:", pointIndex);
             return;
         }
 
+        // Retrieve the selected image array
         const selectedImageArray = decodedMeshgrid[pointIndex];
 
         if (!selectedImageArray || selectedImageArray.length === 0) {
@@ -131,6 +111,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const ctx = canvas.getContext('2d');
         const imageData = ctx.createImageData(imageShape[0], imageShape[1]);
 
+        // Fill imageData with selectedImageArray
         for (let i = 0; i < selectedImageArray.length; i++) {
             const value = selectedImageArray[i];
             imageData.data[4 * i] = value;

@@ -1,11 +1,11 @@
-from keras.models import Model
 import re
 from os import listdir
 
-from src.data.import_data import import_data
 import matplotlib.pyplot as plt
 import numpy as np
-from keras.models import load_model, Model
+from keras.models import Model, load_model
+
+from src.data.import_data import import_data
 from src.models.define_model import create_encod_decod
 from src.models.split_encoder_decoder import split_encoder_decoder
 

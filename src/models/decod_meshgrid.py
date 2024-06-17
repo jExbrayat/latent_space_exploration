@@ -1,11 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from keras.models import load_model
+from keras.models import Model, load_model
 
+from src.models.define_model import create_encod_decod
 from src.models.split_encoder_decoder import split_encoder_decoder
 from src.utils.create_mesh_grid_on_latent_space import create_meshgrid
-from src.models.define_model import create_encod_decod
-from keras.models import Model
 
 # Define autoencoder name
 autoencoder_name = "VAE-1"

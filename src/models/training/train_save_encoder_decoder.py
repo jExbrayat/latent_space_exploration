@@ -1,3 +1,5 @@
+# Check result
+import matplotlib.pyplot as plt
 from keras.callbacks import EarlyStopping, History, ModelCheckpoint
 from keras.models import save_model
 
@@ -51,9 +53,6 @@ model_viz.plot_training_curve(
 save_model(encod_decod, f"models/autoencoders/{saving_file_name}.keras")
 encod_decod.save_weights(f"models/autoencoders/{saving_file_name}.h5")
 
-
-# Check result
-import matplotlib.pyplot as plt
 
 X_pred = encod_decod.predict(X)
 for idx in range(10):

@@ -7,7 +7,7 @@ It was inspired by N8python's work: [github.com/N8python/mnistLatentSpace](https
 **[Try out the latent space visualization application.](https://jexbrayat.github.io/latent_space_exploration/)**  
 I advise not to dive into the code but rather read the abstract and the docs.
 
-<img src="assets/application_teaser.gif" width="500" height="auto" />
+<img src="assets/application_teaser.gif" width="600" height="auto" />
 
 ## Abstract
 
@@ -30,8 +30,14 @@ The selected autoencoder architecture features a variational layer and a customi
 ## Visualize the latent space through training epochs
 
 I was curious to see how many epochs were necessary for the latent space to become coherent.  
-This curiosity led to the following gif which I find nice to watch: 
+This curiosity led to the following gifs which I find nice to watch: 
 
-<img src="assets/vae_latent_space_evolution.gif" width="500" height="auto" />
+<img src="assets/vae_latent_space_evolution.gif" width="600" height="auto" />
+<br>
+<img src="assets/dense_latent_space_evolution.gif" width="600" height="auto" />
+<br>
+<img src="assets/convDense_latent_space_evolution.gif" width="600" height="auto" />
+
+
 
 

@@ -1,16 +1,12 @@
 from keras import backend as K
 from keras.layers import (
-    Conv2D,
     Dense,
     Dropout,
-    Flatten,
     Input,
     Lambda,
-    MaxPooling2D,
-    Reshape,
 )
-from keras.losses import binary_crossentropy, mean_squared_error
-from keras.models import Model, Sequential
+from keras.losses import mean_squared_error
+from keras.models import Model
 
 
 def variational_sampling(args: tuple) -> list:

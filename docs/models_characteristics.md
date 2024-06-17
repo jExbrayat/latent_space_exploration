@@ -72,6 +72,6 @@ It performs just as well as *ConvDense-2* autoencoder.
 ## n8python's version
 *n8python github user is the original author of MNIST Latent Space project.*  
 
-Autoencoder training failed because encoder encodes every image to the same two-dimensional point [-1, 1].
+Autoencoder training failed because encoder encodes every image to the same two-dimensional point (-1, 1).
 
 

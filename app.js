@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             scaleratio: 1,
             fixedrange: true,
             title: {
-                text: 'First dimension',
+                text: 'X-axis',
                 font: {
                     size: 16
                 }
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             scaleratio: 1,
             fixedrange: true,
             title: {
-                text: 'Second dimension',
+                text: 'Y-axis',
                 font: {
                     size: 16
                 }

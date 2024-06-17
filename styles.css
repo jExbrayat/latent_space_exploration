@@ -82,4 +82,7 @@
     .plot {
         margin-top: 20px; /* Add space above the plot on smaller screens */
     }
+    .description {
+        width: 100%;
+    }
 }

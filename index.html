@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +8,17 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="app.js" defer></script>
 </head>
-
 <body>
+    <div class="description">
+        <p>
+            The autoencoder was trained using a variational layer and a customized loss function with a Kullback-Leibler penalization term. 
+            This enforces the area of each class to be homogeneous with smooth borders.<br>
+            <br>
+            Despite the absurdly low dimensionality of the latent space - 2 dimensions against 28 x 28 = 784 for the input data - 
+            the decoder manages very well to generate realistic digits, 
+            which demonstrates the ability of autoencoders to achieve dimensionality reduction.
+        </p>
+    </div>
     <div class="container">
         <div class="legend-container">
             <p>Digits</p>
@@ -23,5 +31,4 @@
         </div>
     </div>
 </body>
-
 </html>

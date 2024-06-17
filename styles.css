@@ -64,6 +64,14 @@
     font-size: 14px; /* Adjust font size as needed */
 }
 
+.description {
+    padding-top: 2%;
+    font-size: 18px;
+    font: 1em Arial, sans-serif;
+    width: 45%;
+    text-align: justify;
+}
+
 /* Media query for smaller screens */
 @media (max-width: 600px) {
     .container {

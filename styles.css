@@ -1,8 +1,10 @@
 /* General container styles */
 .container {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the top left */
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: flex-start;
+    /* Align items to the top left */
     gap: 20px;
     margin-top: 3%;
     margin-left: 3%;
@@ -12,56 +14,72 @@
 
 @media (min-width: 768px) {
     .container {
-        flex-direction: row; /* Align items horizontally on larger screens */
-        justify-content: flex-start; /* Align items to the left */
-        align-items: flex-start; /* Align items to the top left */
+        flex-direction: row;
+        /* Align items horizontally on larger screens */
+        justify-content: flex-start;
+        /* Align items to the left */
+        align-items: flex-start;
+        /* Align items to the top left */
     }
 }
 
 /* Plot container styles */
 .plot {
-    width: 100%; /* Adjust width for full-width display */
-    max-width: 600px; /* Set maximum width to prevent overflow */
-    height: auto; /* Let the height adjust based on content */
+    width: 100%;
+    /* Adjust width for full-width display */
+    max-width: 600px;
+    /* Set maximum width to prevent overflow */
+    height: auto;
+    /* Let the height adjust based on content */
 }
 
 /* Selected image styles */
 #selected-image {
-    width: 150%; /* Ensure image doesn't exceed container width */
-    height: auto; /* Maintain aspect ratio */
-    margin-top: 20px; /* Add space above the image */
+    width: 150%;
+    /* Ensure image doesn't exceed container width */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin-top: 20px;
+    /* Add space above the image */
 }
 
 /* Legend container styles */
 .legend-container {
-    width: 10%; /* Adjust the legend container width as needed */
+    width: 10%;
+    /* Adjust the legend container width as needed */
     padding-top: 20px;
 }
 
 /* Legend list styles */
 .legend {
     padding: 0;
-    list-style-type: none; /* Remove default list style */
+    list-style-type: none;
+    /* Remove default list style */
 }
 
 /* Legend item styles */
 .legend li {
     display: flex;
     align-items: center;
-    margin-bottom: 5px; /* Adjust spacing between legend items */
+    margin-bottom: 5px;
+    /* Adjust spacing between legend items */
 }
 
 /* Legend color block styles */
 .legend-color {
     display: inline-block;
-    width: 20px; /* Adjust the color block width */
-    height: 20px; /* Adjust the color block height */
-    margin-right: 10px; /* Spacing between color block and text */
+    width: 20px;
+    /* Adjust the color block width */
+    height: 20px;
+    /* Adjust the color block height */
+    margin-right: 10px;
+    /* Spacing between color block and text */
 }
 
 /* Legend text styles */
 .legend-text {
-    font-size: 14px; /* Adjust font size as needed */
+    font-size: 14px;
+    /* Adjust font size as needed */
 }
 
 .description {
@@ -75,13 +93,16 @@
 /* Media query for smaller screens */
 @media (max-width: 600px) {
     .container {
-        flex-direction: column; /* Stack items vertically on smaller screens */
+        flex-direction: column;
+        /* Stack items vertically on smaller screens */
         align-items: center;
     }
 
     .plot {
-        margin-top: 20px; /* Add space above the plot on smaller screens */
+        margin-top: 20px;
+        /* Add space above the plot on smaller screens */
     }
+
     .description {
         width: 100%;
     }

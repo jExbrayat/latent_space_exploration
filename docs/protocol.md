@@ -1,41 +1,46 @@
 # Protocol
+
 This file logs my thoughts and describes my objectives.
 
-## Low loss vs right meshgrid decoding
-Dense-1 autoencoder performs less than ConDense-2 autoencoder altough Dense-1 gives much better decoding on the meshgrid of latent space.  
-This means ConvDense-2 manages better to autoencode MNIST data, but fails at the **task we are trying to achieve in this repository, that is to display a 100x100 grid of the 2-dimensional latent space with decoded image of each point of the grid**.  
+## Low Loss vs Right Meshgrid Decoding
 
-There may be two reasons for that:  
-- Decoder overfits actual data and thus fails to generalize on the whole meshgrid.  
-- Encoder concentrates data points in small portions of latent space, making a uniformly sparsed meshgrid innapropriate.  
+Dense-1 autoencoder performs worse than ConvDense-2 autoencoder, although Dense-1 provides much better decoding on the meshgrid of the latent space.  
+This indicates that ConvDense-2 manages to autoencode MNIST data better overall, but fails at the **specific task we are trying to achieve in this repository, which is to display a 100x100 grid of the 2-dimensional latent space with a decoded image for each point on the grid**.  
+
+There may be two reasons for this:
+- The decoder overfits actual data and thus fails to generalize across the entire meshgrid.
+- The encoder concentrates data points in small portions of the latent space, making a uniformly sparse meshgrid inappropriate.
 
 ## Method
-We aim for a good autoencoder, with low loss, and a fancy latent space display on a square grid, colored based on predictions of a classifier.  
-Thus, we will try to achieve better than the first naive model Dense-1, even if it gives good results in the end.  
 
-1) Plot latent space representations of actual MNIST images to see their distribution on latent space.  
-See ``models/latent_space_viz/actual_data_scatter_plot/ConvDense-2_encoder.png``  
-As expected, the encoder does not create a square-shaped latent space but something like a diagonal. Hence the bad decoding on the meshgrid outside the diagonal.  
+We aim for a good autoencoder with low loss and a visually appealing latent space display on a square grid, colored based on predictions of a classifier.  
+Thus, we will strive to achieve better results than the first naive model, Dense-1, even though it ultimately yields good results.
 
-2) Build a model that produces a square-shaped latent space.  
+1) Plot latent space representations of actual MNIST images to observe their distribution in the latent space.  
+   See *``models/latent_space_viz/actual_data_scatter_plot/ConvDense-2_encoder.png``*  
+   As expected, the encoder does not create a square-shaped latent space but rather something like a diagonal, which explains the poor decoding on the meshgrid outside the diagonal.
 
-3) Decode each point of latent space meshgrid to plot them interactively in user app.  
-Result is at ``models/decoded_meshgrid``
+2) Develop a model that produces a square-shaped latent space.
+
+3) Decode each point of the latent space meshgrid to plot them interactively in the user app.  
+   Results are stored in *``models/decoded_meshgrid``*.
 
 4) Create a colormap of the meshgrid based on the predicted classes of the decoded images.  
-See ``models/latent_space_viz/colormaps``  
-This task is done thanks to a classifier trained on MNIST images.  
-**Recall on data structure:**  
-(28, 28) MNIST image --*encoder*--> 2D representation of MNIST image --*decoder*--> (28, 28) decoded image
+   See *``models/latent_space_viz/colormaps``*  
+   This task is accomplished using a classifier trained on MNIST images.  
+   **Recall on data structure:**  
+   (28, 28) MNIST image --*encoder*--> 2D representation of MNIST image --*decoder*--> (28, 28) decoded image
 
-5) Create a user app to visualize the latent space colored based on represented number and its decoded version beside.  
+5) Develop a user app to visualize the latent space colored based on represented numbers and their decoded versions displayed beside.
 
-## How to make a good encoder according to experimentations  
-Experimentations led to the following clues to get proper latent space:
+## How to Make a Good Encoder According to Experimentations
+
+Experimentations have provided the following insights to achieve a proper latent space:
 - Use tanh or sigmoid activation functions for the output.
 - ~~The longer the training, the less evenly distributed on the axis of latent space the data points are.~~  
-Wrong: using proper activation function for output of encoder and using validation set works fine.
-- Max pooling layers seem to destroy too much information since resulting loss is high.  
-- Expanding latent space with convolutional layers on top improves autoencoder loss.
-- Use validation set to avoid overfitting.
-- Dropout layers make autoencoder's performance lower while not ensuring an evenly distributed latent space on two axis. 
+  Correction: Using proper activation functions for the output of the encoder and employing a validation set works effectively.
+- Max pooling layers tend to destroy too much information, resulting in high loss.
+- Expanding the latent space with convolutional layers on top improves autoencoder performance.
+- Use a validation set to prevent overfitting.
+- Dropout layers reduce autoencoder performance without ensuring an evenly distributed latent space across both axes.
+

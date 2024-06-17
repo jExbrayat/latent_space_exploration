@@ -2,9 +2,9 @@
 
 This repository aims to be a pedagogical tool for understanding how neural networks intermediate layers treat the input data in the so-called *latent space.*  
 
-It was inspired by N8python's work: https://github.com/N8python/mnistLatentSpace  
+It was inspired by N8python's work: [github.com/N8python/mnistLatentSpace](https://github.com/N8python/mnistLatentSpace)  
 
-**Try out the latent space visualization application with the following link: https://jexbrayat.github.io/latent_space_exploration/**  
+**[Try out the latent space visualization application.](https://jexbrayat.github.io/latent_space_exploration/)**  
 I advise not to dive into the code but rather read the abstract and the docs.
 
 <img src="assets/application_teaser.gif" width="500" height="auto" />

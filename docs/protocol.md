@@ -18,9 +18,8 @@ See ``models/latent_space_viz/actual_data_scatter_plot/ConvDense-2_encoder.png``
 As expected, the encoder does not create a square-shaped latent space but something like a diagonal. Hence the bad decoding on the meshgrid outside the diagonal.  
 
 1) Build a model that produces a square-shaped latent space.  
-See ``models/latent_space_viz/actual_data_scatter_plot/Dense-2_through_epochs/training-7_epoch_150.png``   
 
-1) Decode each point of latent space meshgrid to plot them interactively in user app.  
+2) Decode each point of latent space meshgrid to plot them interactively in user app.  
 Result is at ``models/decoded_meshgrid``
 
 1) Create a colormap of the meshgrid based on the predicted classes of the decoded images.  
@@ -30,7 +29,6 @@ This task is done thanks to a classifier trained on MNIST images.
 (28, 28) MNIST image --*encoder*--> 2D representation of MNIST image --*decoder*--> (28, 28) decoded image
 
 1) Create a user app to visualize the latent space colored based on represented number and its decoded version beside.  
-See ``apps/app.py`` 
 
 ## How to make a good encoder according to experimentations  
 Experimentations led to the following clues to get proper latent space:

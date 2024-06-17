@@ -1,7 +1,6 @@
 # Latent space exploration
 
 This repository aims to be a pedagogical tool for understanding how neural networks intermediate layers treat the input data in the so-called *latent space.*  
-It was inspired by N8python's work: [github.com/N8python/mnistLatentSpace](https://github.com/N8python/mnistLatentSpace)  
 
 **[Try out the latent space visualization application.](https://jexbrayat.github.io/latent_space_exploration/)**  
 
@@ -40,6 +39,6 @@ Also, these plots show that latent embeddings can take very various forms.
 <br>
 <img src="assets/convDense_latent_space_evolution.gif" width="600" height="auto" />
 
+---
 
-
-
+This project was inspired by N8python's work: [github.com/N8python/mnistLatentSpace](https://github.com/N8python/mnistLatentSpace)  

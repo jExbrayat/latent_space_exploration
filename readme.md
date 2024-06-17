@@ -4,7 +4,6 @@ This repository aims to be a pedagogical tool for understanding how neural netwo
 It was inspired by N8python's work: [github.com/N8python/mnistLatentSpace](https://github.com/N8python/mnistLatentSpace)  
 
 **[Try out the latent space visualization application.](https://jexbrayat.github.io/latent_space_exploration/)**  
-I advise not to dive into the code but rather read the abstract and the docs.
 
 <img src="assets/application_teaser.gif" width="600" height="auto" />
 

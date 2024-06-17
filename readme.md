@@ -30,7 +30,11 @@ The selected autoencoder architecture features a variational layer and a customi
 ## Visualize the latent space through training epochs
 
 I was curious to see how many epochs were necessary for the latent space to become coherent.  
-This curiosity led to the following gifs which I find nice to watch: 
+This curiosity led to the following gifs which I find nice to watch.  
+
+Note that it takes a few epochs for the encoder to utilize the whole available space which is $[-1, 1]^2$ in this case.  
+Also, these plots show that latent embeddings can take very various forms.
+
 
 <img src="assets/vae_latent_space_evolution.gif" width="600" height="auto" />
 <br>

@@ -7,3 +7,5 @@ models/checkpoints/*
 # Track all docs files in order to keep repository's structure
 !*.txt
 !*.md
+
+*.png

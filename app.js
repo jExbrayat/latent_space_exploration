@@ -4,6 +4,40 @@ async function fetchData(url) {
     return data;
 }
 
+async function fetchAndUnzip() {
+    // Fetch zip file
+    const response = await fetch('assets/imgs.zip');
+    
+    // Read the fetched file as a blob
+    const zipFileBlob = await response.blob();
+
+    // Create a BlobReader object used to read `zipFileBlob`
+    const zipBlobReader = new zip.BlobReader(zipFileBlob);
+    
+    // Unzip the data
+    const zipReader = new zip.ZipReader(zipBlobReader);
+
+    // Retrieve each file in a list of entries
+    const entries = await zipReader.getEntries();
+
+    // Initialize array to store entry data
+    const uint8_entries = [];
+
+    for (let i = 0; i < entries.length - 9900; i++) {
+        // Convert the entry from zip.js object to blob format 
+        const entryData = await entries[i].getData(new zip.BlobWriter());
+
+        // Push entry to output entries list
+        uint8_entries.push(entryData);
+    }
+
+    // Close the zip reader
+    await zipReader.close();
+
+    // Return all entry data as blobs
+    return uint8_entries;
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
     const decodedMeshgrid = await fetchData('assets/decoded_meshgrid.json');
     const cmap = await fetchData('assets/cmap.json');

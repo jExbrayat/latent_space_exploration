@@ -7,13 +7,13 @@ async function fetchData(url) {
 async function fetchAndUnzip() {
     // Fetch zip file
     const response = await fetch('assets/imgs.zip');
-    
+
     // Read the fetched file as a blob
     const zipFileBlob = await response.blob();
 
     // Create a BlobReader object used to read `zipFileBlob`
     const zipBlobReader = new zip.BlobReader(zipFileBlob);
-    
+
     // Unzip the data
     const zipReader = new zip.ZipReader(zipBlobReader);
 
@@ -36,7 +36,7 @@ async function fetchAndUnzip() {
 
     // Return all entry data as blobs
     return uint8_entries;
-}
+};
 
 document.addEventListener('DOMContentLoaded', async function () {
     const decodedMeshgrid = await fetchData('assets/decoded_meshgrid.json');

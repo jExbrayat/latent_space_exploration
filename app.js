@@ -39,8 +39,10 @@ async function fetchAndUnzip() {
 };
 
 document.addEventListener('DOMContentLoaded', async function () {
-    const decodedMeshgrid = await fetchData('assets/decoded_meshgrid.json');
     const cmap = await fetchData('assets/cmap.json');
+    fetchAndUnzip().then(uint8_entries => {
+        // Use uint8_entries which are blobs of uint8 encoded png images
+
     const gridSize = 100;
 
     // Define Seaborn-like "tab10" colormap
@@ -131,34 +133,26 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         // Retrieve the selected image array
-        const selectedImageArray = decodedMeshgrid[pointIndex];
+            const selectedImageArray = uint8_entries[pointIndex];
 
         if (!selectedImageArray || selectedImageArray.length === 0) {
             console.error("Selected image array is undefined or empty.");
             return;
         }
 
-        const canvas = document.createElement('canvas');
-        const imageShape = [28, 28];
-        canvas.width = imageShape[0];
-        canvas.height = imageShape[1];
-        const ctx = canvas.getContext('2d');
-        const imageData = ctx.createImageData(imageShape[0], imageShape[1]);
+            console.log(selectedImageArray)
 
-        // Fill imageData with selectedImageArray
-        for (let i = 0; i < selectedImageArray.length; i++) {
-            const value = selectedImageArray[i];
-            imageData.data[4 * i] = value;
-            imageData.data[4 * i + 1] = value;
-            imageData.data[4 * i + 2] = value;
-            imageData.data[4 * i + 3] = 255;
-        }
+            // Convert the blob object to URL
+            const img_url = URL.createObjectURL(selectedImageArray);
+            
+            // Get selected image html element
+            const img = document.getElementById('selected-image');
 
-        ctx.putImageData(imageData, 0, 0);
-        const img = document.getElementById('selected-image');
-        img.src = canvas.toDataURL();
+            // Assign the source of the image
+            img.src = img_url;
     }
 
     document.getElementById('plot').on('plotly_click', graphInteraction);
     document.getElementById('plot').on('plotly_hover', graphInteraction);
+    });
 });

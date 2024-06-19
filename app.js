@@ -1,29 +1,28 @@
 function splitPngImages(byteArray) {
-    // The PNG signature to look for
-    const pngSignature = [137, 80, 78, 71];
+    const pngSignature = new Uint8Array([137, 80, 78, 71]);
     const images = [];
-    let currentImage = [];
-    let index = 0;
+    let currentImageStart = 0;
 
-    // Iterate through the byteArray
-    while (index < byteArray.length) {
-        // Check for the PNG signature
-        if (byteArray.slice(index, index + pngSignature.length).join(',') === pngSignature.join(',')) {
-            // If a new image starts and there's already data in currentImage, push it to images
-            if (currentImage.length > 0) {
-                images.push(new Uint8Array(currentImage));
+    for (let i = 0; i < byteArray.length - pngSignature.length; i++) {
+        let isPng = true;
+        for (let j = 0; j < pngSignature.length; j++) {
+            if (byteArray[i + j] !== pngSignature[j]) {
+                isPng = false;
+                break;
             }
-            // Start a new image
-            currentImage = [];
         }
-        // Add the current byte to the current image
-        currentImage.push(byteArray[index]);
-        index++;
+        if (isPng) {
+            if (currentImageStart < i) {
+                images.push(byteArray.slice(currentImageStart, i));
+            }
+            currentImageStart = i;
+            i += pngSignature.length - 1; // Skip to end of PNG signature
+        }
     }
 
     // Push the last image if there's any
-    if (currentImage.length > 0) {
-        images.push(new Uint8Array(currentImage));
+    if (currentImageStart < byteArray.length) {
+        images.push(byteArray.slice(currentImageStart));
     }
 
     return images;

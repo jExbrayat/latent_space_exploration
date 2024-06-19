@@ -158,8 +158,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 return;
             }
 
-            console.log(selectedImageArray)
-
             // Convert as blob
             const blobImage = new Blob([selectedImageArray], { type: 'image/png' });
             const imageUrl = URL.createObjectURL(blobImage);

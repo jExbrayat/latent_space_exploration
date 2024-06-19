@@ -41,7 +41,8 @@ async function fetchBinaryFile() {
         // Remove first element which is not an image
         const pngImages = splitArray.slice(1);
 
-        return pngImages; // List of images
+        const pngBlobImages = pngImages.map(img => new Blob([img], { type: 'image/png' }));
+        return pngBlobImages; // List of images
 
     } catch (error) {
         console.error('Error loading binary file:', error);
@@ -157,9 +158,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 return;
             }
 
-            // Convert as blob
-            const blobImage = new Blob([selectedImageArray], { type: 'image/png' });
-            const imageUrl = URL.createObjectURL(blobImage);
+            const imageUrl = URL.createObjectURL(selectedImageArray);
 
             // Get selected image html element
             const img = document.getElementById('selected-image');

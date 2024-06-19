@@ -61,6 +61,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     const cmap = await fetchData('assets/cmap.json');
     fetchBinaryFile().then(images => {
 
+        var loader = document.querySelector('.loader');
+        var loading_text = document.querySelector('.loading-text');
+        // Hide the loader
+        loader.style.display = 'none';
+        loading_text.style.display = 'none';
+
         const gridSize = 100;
 
         // Define Seaborn-like "tab10" colormap
